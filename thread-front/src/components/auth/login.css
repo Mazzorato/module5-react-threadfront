@@ -5,3 +5,8 @@ form {
     align-items: center;
     justify-content: center;
 }
+
+a {
+    display: flex;
+    justify-content: center;
+}
