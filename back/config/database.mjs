@@ -1,5 +1,5 @@
 import {db} from './config.mjs';
-import { Sequelize } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 
 export async function loadSequelize() {
 
@@ -75,7 +75,41 @@ export async function loadSequelize() {
         );
         Comment.belongsTo(Post);
 
+        await User.create({
+        username: "user1",
+        email: "user@gmail.com",
+        password: "foreveruser"});
 
+        await Post.create({
+            title: "Mon premier post",
+            content: "Contenu de mon premier post",
+            UserId: 1
+        });
+
+        await Comment.create({
+            content: "Super post !",
+            UserId: 1,
+            PostId: 1
+        });
+
+        await User.create({
+        username: "user2",
+        email: "user2@gmail.com",
+        password: "foreveruser"});
+
+        await Post.create({
+            title: "Mon premier post",
+            content: "Contenu de mon premier post",
+            UserId: 2
+        });
+
+        await Comment.create({
+            content: "Super post !",
+            UserId: 2,
+            PostId: 2
+        });
+
+        await sequelize.sync({ force: false }); 
 
         return sequelize;
 
