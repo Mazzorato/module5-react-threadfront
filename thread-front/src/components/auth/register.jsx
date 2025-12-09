@@ -1,28 +1,25 @@
 import "./register.css";
 
-
 export function Register() {
   return (
     <form method="post">
-      <label>
-        Pseudo
-        <input type="text" name="pseudo" required />
-      </label>
+      <input type="text" name="pseudo" placeholder="@Pseudo" required />
 
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
+      <input type="email" name="email" placeholder="email" required />
 
-      <label>
-        Mot de passe
-        <input type="password" name="password" required />
-      </label>
+      <input
+        type="password"
+        name="password"
+        placeholder="mot de passe"
+        required
+      />
 
-      <label>
-        Confirmer le mot de passe
-        <input type="password" name="confirm_password" required />
-      </label>
+      <input
+        type="password"
+        name="confirm_password"
+        placeholder="mot de passe encore"
+        required
+      />
 
       <button type="submit">Créer un compte</button>
     </form>

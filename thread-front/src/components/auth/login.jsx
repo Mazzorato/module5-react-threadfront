@@ -4,15 +4,14 @@ export function Login() {
   return (
     <>
       <form method="post">
-        <label>
-          Email
-          <input type="email" name="email" required />
-        </label>
+        <input type="email" name="email" placeholder="email" required />
 
-        <label>
-          Mot de passe
-          <input type="password" name="password" required />
-        </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="********"
+          required
+        />
 
         <button type="submit">Se connecter</button>
       </form>

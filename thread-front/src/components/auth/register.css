@@ -1,7 +1,25 @@
-
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 3rem; /* Risque de changer avec l'import du title */
+}
+
+input {
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+button {
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
 }
