@@ -12,10 +12,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<Profil />} />
         </Routes>
       </BrowserRouter>
       
-        <Profil />
+        {/* <Profil /> */}
       
     </>
   )
