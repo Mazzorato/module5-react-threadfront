@@ -1,6 +1,6 @@
 import './profile.css'
 
-export default function Profil () {
+export  function Profil () {
 
 
     return (
