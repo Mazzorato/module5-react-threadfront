@@ -1,6 +1,6 @@
 import "./login.css";
 
-export function Register() {
+export function Login() {
   return (
     <>
       <form method="post">
