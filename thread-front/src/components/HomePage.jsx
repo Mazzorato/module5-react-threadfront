@@ -1,10 +1,18 @@
+import Title from "./shared/Title";
+import PostCard from "./shared/PostCard";
+import CommentCard from "./shared/CommentCard";
+import Fotter from "./shared/Footer";
+
 
 
 export default function HomePage(){
 
     return (
         <div>
-            <h1>Welcome to the Home Page</h1>
+            <Title title={"Thread title"}/>
+            <PostCard author={"author du post(user)"} content={"content du post"}/>
+            <CommentCard author={"user"} content={"commentaire d'user"}/>
+            <Fotter />
         </div>
     )
 }

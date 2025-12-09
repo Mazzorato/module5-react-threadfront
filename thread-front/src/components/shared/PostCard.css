@@ -1,0 +1,13 @@
+.post-title{
+       font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    border-left: 100px;
+}
+.post-content{
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 10px 0;
+    text-align: center;
+}
