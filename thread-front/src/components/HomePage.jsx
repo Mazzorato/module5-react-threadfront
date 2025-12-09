@@ -12,7 +12,7 @@ export default function HomePage(){
             <Title title={"Thread title"}/>
             <PostCard author={"author du post(user)"} content={"content du post"}/>
             <CommentCard author={"user"} content={"commentaire d'user"}/>
-            <Fotter />
+            <Footer />
         </div>
     )
 }
