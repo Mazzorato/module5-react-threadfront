@@ -1,5 +1,6 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
+import Profil from './components/profile/profile.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import HomePage from './components/HomePage.jsx'
@@ -13,6 +14,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
+      
+        <Profil />
+      
     </>
   )
 }
