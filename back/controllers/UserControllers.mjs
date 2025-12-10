@@ -1,8 +1,8 @@
 import { UserModel } from "./UserModel";
 
 
+//Création d'un compte utilisateur (route publique)
 app.post("/register", async (req, res) => {
-  //Création d'un compte utilisateur (route publique)
   try {
     const { username, email, password, verifiedPassword } = req.body;
 
