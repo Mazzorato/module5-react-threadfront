@@ -80,11 +80,57 @@ export async function loadSequelize() {
         email: "user@gmail.com",
         password: "foreveruser"});
 
+        await User.create({
+        username: "user2",
+        email: "user2@gmail.com",
+        password: "foreveruser"});
+
+        await User.create({
+            username: "user3",
+            email: "user3@gmail.com",
+            password: "foreveruser"});
+
+        await User.create ({
+            username: "user4",
+            email: "user4@gmail.com",
+            password: "foreveruser"}); 
+
+        await User.create({
+            username: "user5",
+            email: "user5@gmail.com",
+            password: "foreveruser"});
+        
+
         await Post.create({
             title: "Mon premier post",
             content: "Contenu de mon premier post",
             UserId: 1
         });
+        
+        await Post.create({
+            title: "Mon deuxième post",
+            content: "Contenu de mon deuxième post",
+            UserId: 2
+        });
+
+        await Post.create({
+            title: "Mon troisième post",
+            content: "Contenu du troisième post",
+            UserId: 3
+        });
+
+        await Post.create({
+            title: "Mon quatrième post",
+            content: "Contenu du quatrième post",
+            UserId: 4
+        });
+
+        await Post.create({
+            title: "Mon cinquième post",
+            content: "Contenu du cinquième post",
+            UserId: 5
+        });
+
 
         await Comment.create({
             content: "Super post !",
@@ -92,21 +138,28 @@ export async function loadSequelize() {
             PostId: 1
         });
 
-        await User.create({
-        username: "user2",
-        email: "user2@gmail.com",
-        password: "foreveruser"});
-
-        await Post.create({
-            title: "Mon premier post",
-            content: "Contenu de mon premier post",
-            UserId: 2
-        });
-
         await Comment.create({
             content: "Super post !",
             UserId: 2,
             PostId: 2
+        });
+
+        await Comment.create({
+            content: "Nice post !",
+            UserId: 3,
+            PostId: 3
+        });
+
+        await Comment.create({
+            content: "Sympa ce post !",
+            UserId: 4,
+            PostId: 4
+        });
+
+        await Comment.create({
+            content: "J'adore ce post ! ",
+            UserId: 5,
+            PostId: 5
         });
 
         await sequelize.sync({ force: false }); 
