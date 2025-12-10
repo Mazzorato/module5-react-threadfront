@@ -44,11 +44,6 @@ export async function loadSequelize() {
                 content: DataTypes.STRING,
             });
 
-        sequelize.define("Comment",
-            {
-                content: DataTypes.STRING
-            });
-
 
         const User = sequelize.models.User;
         const Post = sequelize.models.Post;
@@ -132,35 +127,6 @@ export async function loadSequelize() {
         });
 
 
-        await Comment.create({
-            content: "Super post !",
-            UserId: 1,
-            PostId: 1
-        });
-
-        await Comment.create({
-            content: "Super post !",
-            UserId: 2,
-            PostId: 2
-        });
-
-        await Comment.create({
-            content: "Nice post !",
-            UserId: 3,
-            PostId: 3
-        });
-
-        await Comment.create({
-            content: "Sympa ce post !",
-            UserId: 4,
-            PostId: 4
-        });
-
-        await Comment.create({
-            content: "J'adore ce post ! ",
-            UserId: 5,
-            PostId: 5
-        });
 
         await sequelize.sync({ force: false }); 
 
