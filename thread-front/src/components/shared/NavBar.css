@@ -1,0 +1,28 @@
+.navBar {
+    display: flex;
+    background-color: #1f1d1d;
+    padding: 10px 0;
+}
+
+.navBar button {
+    background: none;
+   
+    padding: 0;
+   
+    cursor: pointer;
+    
+}
+
+.navBar img {
+    cursor: pointer;
+    width: 6.5rem; 
+    height: 3.5rem;
+    transition: transform 0.2s ease;
+    filter: invert(1);
+}
+
+
+.navBar img:hover {
+    transform: scale(1.1);
+}
+
