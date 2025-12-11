@@ -1,38 +1,31 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export function verifyTokenJWT(user) {
+  const JWT_SECRET = "your_jwt_secret_key"; // on remplace pour un vrai secret en prod
 
-    const JWT_SECRFET = "your_jwt_secret_key"; // on replace pour un vrai secret en prod
+  return async (req, res, next) => {
+    try {
+      const token = req.cookies.token;
 
-    return async (req, res, next) => {
+      if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+      }
 
-        try {
+      const decoded = jwt.verify(token, JWT_SECRET);
 
-            const token = req.cookies.token;
+      req.userID = decoded.userId;
 
-            if (!token) {
+      req.userRole = decoded.role;
 
-                return res.status(401).json({ message: 'No token provided' });
-            }
+      const user = await user.findByPk(req.userID);
 
-            const decoded = jwt.verify(token, JWT_SECRFET);
+      if (!user) {
+        return res.status(401).json({ message: "User not found" });
+      }
 
-            req.userID = decoded.userId;
-
-            req.userRole = decoded.role;
-
-            const user = await user.findByPk(req.userID);
-
-            if (!user) {
-                
-                return res.status(401).json({ message: 'User not found' });
-            }
-
-            next();
-        }catch (error) {
-
-            return res.status(401).json({ message: 'Unauthorized' });
-        }
-    };
+      next();
+    } catch (error) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+  };
 }
-

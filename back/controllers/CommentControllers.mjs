@@ -1,4 +1,4 @@
-import { Comment } from "../models/commentModels.mjs";
+import { Comment } from "../models/CommentModels.mjs";
 
 
 export async function createComment(req, res) {

@@ -1,8 +1,7 @@
 import { UserModel } from "./UserModel";
 
-
 //Création d'un compte utilisateur (route publique)
-app.post("/register", async (req, res) => {
+export async function register(req, res) {
   try {
     const { username, email, password, verifiedPassword } = req.body;
 
@@ -37,9 +36,9 @@ app.post("/register", async (req, res) => {
     }
     return res.status(500).json({ message: "Error registering user " });
   }
-});
+}
 
-app.post("/login", async (req, res) => {
+export async function login(req, res) {
   try {
     const { email, password } = req.body;
 
@@ -60,52 +59,9 @@ app.post("/login", async (req, res) => {
     console.log(error);
     res.status(500).json({ error: "Erreur serveur" });
   }
-});
-
-export async function UserAll() {
-  const User = await new UserModel();
-
-  app.get("/users", async (req, res) => {
-    try {
-      const users = await User.findAll();
-      res.json(users);
-    } catch (error) {
-      res.status(500).json({ error: "Erreur serveur" });
-    }
-  });
 }
 
-export async function UserPost() {
-  app.get("/user/:userId/posts", async (req, res) => {
-    try {
-      console.log(req.params);
-      const userId = req.params.userId;
-      req.user.getPosts();
-
-      const posts = await Post.findAll({
-        where: {
-          UserId: userId,
-        },
-      });
-
-      res.json(posts);
-    } catch (error) {
-      console.log(error);
-      req.status(401).json({ error: "Unauthorized" });
-    }
-  });
-}
-
-app.get("/user/:id", async (req, res) => {
-  console.log(req.params);
-
-  const userId = req.params.id;
-  const user = await User.findByPk(userId);
-  res.json(user);
-});
-
-app.get("/logout", (req, res) => {
+export async function logout(req, res) {
   res.clearCookie("token");
   res.json({ message: "Logout successful" });
-});
-
+}
