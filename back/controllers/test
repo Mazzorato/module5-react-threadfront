@@ -1,0 +1,10 @@
+export function catchSequelizeError(res, err) {
+    if (err.name === "SequelizeValidationError") {
+        const errors = err.errors.map((e) => ({
+            field: e.path,
+            message: e.message,
+        }));
+        return sendErrors(res, errors, 400);
+    }
+    return sendErrors(res, [{ field: "global", message: err.message }], 500);
+}
