@@ -8,7 +8,10 @@ export default function HomePage(){
 
     return (
         <div>
-            
+            <PostCard 
+                author={"@JaneDoe"} 
+                content={"This is my first post!"}
+                date={"2024-06-15"}/>
         </div>
     )
 }
