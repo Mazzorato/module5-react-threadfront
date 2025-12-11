@@ -1,27 +1,33 @@
+// import { useState } from "react";
 import "./register.css";
 
 export function Register() {
+
+ 
+
   return (
-    <form method="post">
-      <input type="text" name="pseudo" placeholder="@Pseudo" required />
+    
 
-      <input type="email" name="email" placeholder="email" required />
+    <form  className="register-container" method="post">
+      <input className="pseudo" type="text" name="pseudo"  placeholder="@Pseudo" required />
 
-      <input
+      <input className="email" type="email" name="email" placeholder="e m a i l" required />
+
+      <input className="password"
         type="password"
         name="password"
-        placeholder="mot de passe"
+        placeholder="m o t   d e   p a s s e"
         required
-      />
+        />
 
-      <input
+      <input className="confirmPassword"
         type="password"
         name="confirm_password"
-        placeholder="mot de passe encore"
+        placeholder="m o t   d e   p a s s e   e n c o r e"
         required
-      />
+        />
 
       <button type="submit">Créer un compte</button>
     </form>
-  );
-}
+   
+  )}
