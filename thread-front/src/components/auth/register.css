@@ -23,3 +23,32 @@ button {
   padding: 1rem;
   cursor: pointer;
 }
+
+.register-container{
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10rem;
+}
+
+.pseudo {
+  font-size: 12px;
+  border: none;
+  font-weight: bold;
+}
+
+.email {
+  font-weight: bold;
+  border: none;
+  font-size: 2rem;
+}
+
+.password {
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.confirmPassword {
+  border: none;
+  font-size: 1rem;
+}
