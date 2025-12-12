@@ -1,47 +1,26 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
-  font-family: Arial, sans-serif;
-  color: #ccc2c2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
 
-div {
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
 }
 
-/* h1 {
-  color: #fff;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  position: absolute;
-  top: -9rem;
-} */
-
-form {
+.formulaire {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
   padding: 2rem;
-  background-color: #1c1c1c;
   border-radius: 12px;
   width: 90%;
   max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-input {
+.email, .mdp {
   background-color: transparent;
   font-size: 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -54,7 +33,7 @@ input {
   border: none;
 }
 
-input::placeholder {
+.email, .mdp::placeholder {
   color: #777;
 }
 
@@ -68,9 +47,9 @@ input::placeholder {
   letter-spacing: 4px;
 }
 
-button {
-  background-color: #333;
-  color: #fff;
+.btn {
+  background-color: #fff;
+  color: #333;
   padding: 1rem 2rem;
   border: none;
   border-radius: 12px;
@@ -81,18 +60,15 @@ button {
   text-align: center;
 }
 
-button:hover {
+.btn:hover {
   background-color: #575757;
   color: #e9dada;
 }
 
-a {
+.lien {
   color: #777;
   text-decoration: underline;
   padding-top: 1rem;
   font-size: 1rem;
-}
-
-.lien {
   font-weight: bold;
 }

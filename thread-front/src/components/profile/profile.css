@@ -1,12 +1,3 @@
-body {
-    margin: 0;
-    background: rgb(31, 29, 29);
-    color: rgb(223, 231, 231);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .pseudo {
     font-size: 2rem;

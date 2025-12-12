@@ -2,7 +2,7 @@ import "./login.css";
 
 export function Login() {
   return (
-    <>
+    <div className="login">
       <div>
         <h1>Connexion</h1>
       </div>
@@ -20,6 +20,6 @@ export function Login() {
       </form>
 
       <a className="lien" href="#">Se créer un compte</a>
-    </>
+    </div>
   );
 }
