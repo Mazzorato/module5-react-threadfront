@@ -1,34 +1,31 @@
 .post-card {
-    display: flex;
+  display: flex;
   flex-direction: column;
-    border: 1px solid #0f0f0f;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 10px auto;
-    background: linear-gradient(135deg,#0d0d0d,#2f2f2f);
-    width: 100%;
-    text-align: left ;
-     
+  border: 1px solid #0f0f0f;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 10px auto;
+  background: linear-gradient(135deg, #0d0d0d, #2f2f2f);
+  width: 100%;
+  text-align: left;
 }
 .post-author {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0 0 5px 0;
-    padding: 0;
-    border-left: 100px;
-    color: white;
-
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  padding: 0;
+  border-left: 100px;
+  color: white;
 }
 
 .post-content {
-    font-size: 10px;
-    line-height: 1.6;
-    color: white;
-    margin: 0 0 0 5px;
-  
+  font-size: 10px;
+  line-height: 1.6;
+  color: white;
+  margin: 0 0 0 5px;
 }
-.post-date{
-    font-size: 8px;
-    color: gray;
-    margin: 0 0 0 5px;
+.post-date {
+  font-size: 8px;
+  color: gray;
+  margin: 0 0 0 5px;
 }

@@ -1,4 +1,4 @@
-form {
+.registerForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,49 +7,35 @@ form {
   padding-top: 3rem; /* Risque de changer avec l'import du title */
 }
 
-.register  {
-  background-color: transparent;
+.zoneT {
   font-size: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
   color: white;
 }
 
-button {
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  padding: 1rem;
-  cursor: pointer;
-}
-
-.register-container{
-  display: flex;
-  align-items: flex-start;
-  margin-left: 10rem;
-}
-
 .pseudo {
-  font-size: 12px;
-  border: none;
   font-weight: bold;
 }
 
-.email {
+.emailR {
   font-weight: bold;
-  border: none;
-  font-size: 2rem;
 }
 
 .password {
-  border: none;
   font-size: 1rem;
   font-weight: bold;
 }
 
 .confirmPassword {
-  border: none;
   font-size: 1rem;
+}
+
+.btnRegister {
+  background-color: white;
+  color: black;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
 }

@@ -1,30 +1,47 @@
-button {
+.newPostPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 200px;
+  width: 300px;
+  background: linear-gradient(135deg, #0d0d0d, #171717);
+  border: 1px solid #0f0f0f;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.post-input {
+  background: transparent;
+  color: #ccc;
+  border: none;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.btnPost {
+  width: 10rem;
   background: white;
   color: black;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
+  font-weight: bold;
   padding: 1rem;
   cursor: pointer;
-}
-input {
-  background-color: transparent;
-  font-size: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  width: 30rem;
-  height: 20rem;
-}
-.post-preview {
-  background-color: black;
-  border: solid rgb(0, 0, 0);
-  border-radius: 12px;
-  
-}
-
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }

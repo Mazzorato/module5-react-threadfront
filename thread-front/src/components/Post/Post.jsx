@@ -10,7 +10,7 @@ export function Post() {
 
     return( 
 
-        <div>
+        <div class="PostPage">
             <Title title={"Post"} />
             <PostCard author={"@Ryu-du57"} 
             content={"Aujourd'hui je me suis promene sous la pluie."}

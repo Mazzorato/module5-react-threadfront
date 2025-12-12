@@ -5,9 +5,9 @@ export function Register() {
   return (
     <div className="title">
       <h1> Création de Compte</h1>
-      <form className="register-container" method="post">
+      <form className="registerForm" method="post">
         <input
-          className="pseudo register"
+          className="pseudo zoneT"
           type="text"
           name="pseudo"
           placeholder="@Pseudo"
@@ -15,7 +15,7 @@ export function Register() {
         />
 
         <input
-          className="email register"
+          className="emailR zoneT"
           type="email"
           name="email"
           placeholder="e m a i l"
@@ -23,7 +23,7 @@ export function Register() {
         />
 
         <input
-          className="password register"
+          className="password zoneT"
           type="password"
           name="password"
           placeholder="m o t   d e   p a s s e"
@@ -31,14 +31,14 @@ export function Register() {
         />
 
         <input
-          className="confirmPassword register"
+          className="confirmPassword zoneT"
           type="password"
           name="confirm_password"
           placeholder="m o t   d e   p a s s e   e n c o r e"
           required
         />
 
-        <button type="submit">Créer un compte</button>
+        <button className="btnRegister" type="submit">Créer un compte</button>
       </form>
     </div>
   );

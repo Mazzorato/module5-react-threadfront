@@ -1,34 +1,32 @@
 .comment-card {
-    display: flex;
+  display: flex;
   flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 10px auto;
-    background: linear-gradient(135deg,#e3e3e3,#a0a0a0);
-    width: 100%;
-    text-align: left ;
-     
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 5px;
+  background: linear-gradient(135deg, #e3e3e3, #959595);
+  width: 100%;
+  text-align: left;
 }
 .comment-author {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0 0 5px 0;
-    padding: 0;
-    border-left: 100px;
-    color: black;
-
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  padding: 0;
+  border-left: 100px;
+  color: black;
 }
 
 .comment-content {
-    font-size: 10px;
-    line-height: 1.6;
-    color: black;
-    margin: 0 0 0 5px;
-  
+  font-size: 10px;
+  line-height: 1.6;
+  color: black;
+  margin: 0 0 0 5px;
 }
-.comment-date{
-    font-size: 8px;
-    color: gray;
-    margin: 0 0 0 5px;
+.comment-date {
+  font-size: 8px;
+  color: gray;
+  margin: 0 0 0 5px;
 }

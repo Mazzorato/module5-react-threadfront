@@ -1,32 +1,28 @@
-form {
+.commentForm {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 2rem;
 }
 
 .comment-container {
+  padding: 1rem;
+  text-align: left;
   background-color: transparent;
   font-size: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, #e3e3e3, #959595);
+  border: 1px solid #ccc;
   border-radius: 12px;
+  width: 300px;
 }
 
-button {
+.btnComm {
+  width: 10rem;
   background: white;
   color: black;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
+  font-weight: bold;
   padding: 1rem;
   cursor: pointer;
-}
-
-.comment-preview {
-  background: linear-gradient(135deg,#e3e3e3,#a0a0a0);
-  border: solid rgb(0, 0, 0);
-  border-radius: 12px;
-  color: black;
-}
-.comment-preview ::placeholder{
-  color: black;
 }

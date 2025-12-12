@@ -2,20 +2,21 @@ import "./NewPost.css";
 
 export function NewPost() {
   return (
-    <div>
+    <div className="newPostPage">
       <h1> New Post</h1>
-      <form method="post">
-        <div className="post-preview">
+
+      <form className="post-container">
+        <div className="postCard">
           <input
+            class="post-input"
+            name="content"
             type="textarea"
-            name="post"
             placeholder="Tapez votre post ici ..."
-            required
           />
-          <p>15:25 13 août 25</p>
+          <p className="date">15:25 - 13 août 25</p>
         </div>
-        <button type="submit">
-          Poster !{" "}
+        <button className="btnPost" type="submit">
+          Poster !
         </button>
       </form>
     </div>
