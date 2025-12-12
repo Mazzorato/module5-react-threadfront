@@ -4,13 +4,11 @@ form {
   align-items: flex-start;
 }
 
-input {
+.comment-container {
   background-color: transparent;
   font-size: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  width: 30rem;
-  height: 20rem;
 }
 
 button {

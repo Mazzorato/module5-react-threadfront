@@ -7,7 +7,7 @@ export function Login() {
         <h1>Connexion</h1>
       </div>
       <form className="formulaire" method="post">
-        <input className="email" type="email" name="email" placeholder="e m a i l" required />
+        <input className="email-login" type="email" name="email" placeholder="e m a i l" required />
 
         <input className="mdp"
           type="password"

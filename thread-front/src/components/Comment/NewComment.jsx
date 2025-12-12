@@ -7,7 +7,7 @@ export function NewComment() {
       <div>
         <form method="post">
           <div className="comment-preview">
-            <input
+            <input className="comment-container"
               type="textarea"
               name="comment"
               placeholder="Tapez votre texte ici"
