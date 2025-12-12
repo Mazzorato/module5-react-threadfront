@@ -24,8 +24,11 @@ button {
 }
 
 .comment-preview {
-  background-color: black;
+  background: linear-gradient(135deg,#e3e3e3,#a0a0a0);
   border: solid rgb(0, 0, 0);
   border-radius: 12px;
-  
+  color: black;
+}
+.comment-preview ::placeholder{
+  color: black;
 }
