@@ -2,14 +2,37 @@
     display: flex;
     background-color: #1f1d1d;
     padding: 10px 0;
+    
 }
 
-.navBar button {
+.navBar-button-plus{
     background: none;
    
     padding: 0;
    
     cursor: pointer;
+    
+    
+    
+}
+.navBar-button-profile {
+    background: none;
+   
+    padding: 0;
+   
+    cursor: pointer;
+    filter: invert(1);
+    
+    
+}
+.navBar-button-message {
+    background: none;
+   
+    padding: 0;
+   
+    cursor: pointer;
+    filter: invert(1);
+    
     
 }
 
@@ -18,7 +41,7 @@
     width: 6.5rem; 
     height: 3.5rem;
     transition: transform 0.2s ease;
-    filter: invert(1);
+    
 }
 
 
