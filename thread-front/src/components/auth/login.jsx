@@ -3,20 +3,23 @@ import "./login.css";
 export function Login() {
   return (
     <>
-      <form method="post">
-        <input type="email" name="email" placeholder="email" required />
+      <div>
+        <h1>Connexion</h1>
+      </div>
+      <form className="formulaire" method="post">
+        <input className="email" type="email" name="email" placeholder="e m a i l" required />
 
-        <input
+        <input className="mdp"
           type="password"
           name="password"
-          placeholder="********"
+          placeholder="* * * * * * * *"
           required
         />
 
-        <button type="submit">Se connecter</button>
+        <button className="btn" type="submit">Se connecter</button>
       </form>
 
-      <a href="#">Se créer un compte</a>
+      <a className="lien" href="#">Se créer un compte</a>
     </>
   );
 }
