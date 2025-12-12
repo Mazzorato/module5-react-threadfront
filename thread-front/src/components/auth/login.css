@@ -1,23 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+  color: #ccc2c2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: absolute;
+  top: -9rem;
+} */
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  padding-top: 3rem; /* Risque de changer avec l'import du title */
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 input {
   background-color: transparent;
-  font-size: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
+  color: #ccc2c2;
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+.email {
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.mdp {
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #575757;
+  color: #e9dada;
 }
 
 a {
-  display: flex;
-  justify-content: center;
   color: #777;
   text-decoration: underline;
-  padding-top: 3rem;
+  padding-top: 1rem;
+  font-size: 1rem;
+}
+
+.lien {
+  font-weight: bold;
 }
