@@ -1,3 +1,18 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input {
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  width: 30rem;
+  height: 20rem;
+}
+
 button {
   background: white;
   color: black;
@@ -6,4 +21,11 @@ button {
   font-size: 1rem;
   padding: 1rem;
   cursor: pointer;
+}
+
+.comment-preview {
+  background-color: black;
+  border: solid rgb(0, 0, 0);
+  border-radius: 12px;
+  
 }

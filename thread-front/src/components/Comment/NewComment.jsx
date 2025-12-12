@@ -1,23 +1,22 @@
 import "./NewComment.css";
 
 export function NewComment() {
-
-    return (
-
-
-   <div>
+  return (
+    <div>
+      <h1>New Comment</h1>
+      <div>
         <form method="post">
-      <input type="textarea" name="comment" placeholder="Tapez votre texte ici" required />
-   <button type="submit">Commenter ! </button>
-    </form>
-        
-        
-        
-
-
-        
-            
-            
-        </div>
-    )
+          <div className="comment-preview">
+            <input
+              type="textarea"
+              name="comment"
+              placeholder="Tapez votre texte ici"
+              required
+            />
+          </div>
+          <button type="submit">Commenter ! </button>
+        </form>
+      </div>
+    </div>
+  );
 }
