@@ -1,25 +1,22 @@
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../config/config.mjs";
 
-export function verifyTokenJWT(user) {
-  const JWT_SECRET = "your_jwt_secret_key"; // on remplace pour un vrai secret en prod
-
+export function isLoggedInJWT(UserModel) {
   return async (req, res, next) => {
     try {
       const token = req.cookies.token;
-
       if (!token) {
         return res.status(401).json({ message: "No token provided" });
       }
 
       const decoded = jwt.verify(token, JWT_SECRET);
 
-      req.userID = decoded.userId;
+      req.userId = decoded.userId;
+      //req.userRole = decoded.role;
 
-      req.userRole = decoded.role;
+      req.user = await UserModel.findByPk(req.userId);
 
-      const user = await user.findByPk(req.userID);
-
-      if (!user) {
+      if (!req.user) {
         return res.status(401).json({ message: "User not found" });
       }
 

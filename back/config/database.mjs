@@ -1,22 +1,22 @@
-import {db} from './config.mjs';
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize } from "sequelize";
 
-export async function loadSequelize() {
+import { db } from './config.mjs'
 
-    try {
-        const sequelize = new Sequelize
-            (db.database,
-                db.user,
-                db.password,
-                {
-                    host: db.host,
-                    dialect: db.dialect
-                });
+export const sequelize = new Sequelize(
+    db.database,
+    db.user,
+    db.password,
+    {
+        host : db.host,
+        dialect: db.dialect
+    }
+);
 
-
-    } catch (error) {
-
-        console.error(error);
-        throw Error("Échec du chargement de Sequelize");
+export async function testDBConnection() {
+    try{
+        await sequelize.authenticate();
+        console.log("Connected");
+    } catch(err){
+        console.error(`Erreur DB : ${err}`)
     }
 }

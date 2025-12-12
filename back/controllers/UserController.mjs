@@ -1,4 +1,7 @@
-import { UserModel } from "./UserModel";
+import { User } from "../models/UserModel.mjs";
+import { JWT_SECRET } from "../config/config.mjs";
+import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken';
 
 //Création d'un compte utilisateur (route publique)
 export async function register(req, res) {
@@ -12,7 +15,7 @@ export async function register(req, res) {
       });
     }
 
-    //Vérifie que les deux mot de passe corrrespondent
+    //Vérifie que les deux mot de passe correspondent
     if (password != verifiedPassword) {
       // bcrypt compare
       return res.status(400).json({ message: "Password do not match" });
@@ -49,15 +52,18 @@ export async function login(req, res) {
       return res.status(401).json({ error: "Email ou mot de passe incorrect" });
     }
 
+    console.log("ça passe ici", JWT_SECRET)
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
       expiresIn: "1h",
     });
+    console.log("ça passe là")
 
     res.cookie("token", token, { httpOnly: true });
     res.json({ message: "Connexion réussie" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Erreur serveur" });
+    res
+      .status(500)
+      .json({ error: `Erreur serveur : ${JSON.stringify(error)}` });
   }
 }
 

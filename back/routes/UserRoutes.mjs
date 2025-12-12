@@ -1,14 +1,15 @@
 import { Router } from "express";
+import { isLoggedInJWT } from "../middlewares/isLoggedInJWT.mjs";
+import { register, login, logout } from "../controllers/UserController.mjs";
+import { getPostsbyUserId } from "../controllers/PostController.mjs";
+import { User } from "../models/UserModel.mjs";
 
-import { register, login, logout } from "../controllers/UserControllers.mjs";
+const router = Router();
 
-const router= Router();
+router.post("/register", register);
+router.post("/login", login);
+router.post("/logout", logout);
 
-// user/register
-userController.post("/:register",register);
-// /user/login
-userController.post("/:login", login);
-// user/Logout
-userController.get("/:logout", logout);
+router.get("/users/:userId/posts", isLoggedInJWT(User), getPostsbyUserId);
 
 export default router;

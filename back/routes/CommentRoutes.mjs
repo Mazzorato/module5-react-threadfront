@@ -1,11 +1,12 @@
 import { Router } from "express";
-
-import { createComment, deleteComment } from "../controllers/CommentControllers.mjs";
+import {
+  deleteComment,
+} from "../controllers/CommentController.mjs";
+import { User } from "../models/UserModel.mjs";
+import { isLoggedInJWT } from "../middlewares/isLoggedInJWT.mjs";
 
 const router = Router();
 
-router.post("/:postId", createComment);
-router.delete("/:id", deleteComment);
+router.delete("/:commentId", isLoggedInJWT(User), deleteComment);
 
 export default router;
-
