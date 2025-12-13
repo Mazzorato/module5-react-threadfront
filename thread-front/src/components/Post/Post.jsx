@@ -13,9 +13,10 @@ export function Post() {
           author={"@Ryu-du57"}
           content={"Aujourd'hui je me suis promene sous la pluie."}
           date={"11:50 12 dec 25"}
+          isOpen='true'
         />
-        <p class="commentNumber">
-          XX <i class="fa-solid fa-message"></i>
+        <p className="commentNumber">
+          XX <i className="fa-solid fa-message"></i>
         </p>
         <form className="commentForm" method="post">
           <input
@@ -47,7 +48,7 @@ export function Post() {
           content={"La pluie c'est la vie."}
           date={"12:05 12 dec 25"}
         />
-          <CommentCard
+        <CommentCard
           author={"@Kenjiro"}
           content={"La pluie c'est la vie."}
           date={"12:05 12 dec 25"}

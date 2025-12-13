@@ -14,8 +14,8 @@ export function Profil() {
         content={"Aujourd'hui je me suis promene sous la pluie."}
         date={"11:50 12 dec 25"}
       />
-      <p class="postNumber">
-        XX <i class="fa-brands fa-facebook-messenger"></i>
+      <p className="postNumber">
+        XX <i className="fa-brands fa-facebook-messenger"></i>
       </p>
       <PostCard
         author={"@Ryu-du57"}

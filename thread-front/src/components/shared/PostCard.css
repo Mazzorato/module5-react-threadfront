@@ -8,6 +8,7 @@
   background: linear-gradient(135deg, #0d0d0d, #2f2f2f);
   width: 100%;
   text-align: left;
+  justify-content: space-between;
 }
 .post-author {
   font-size: 15px;

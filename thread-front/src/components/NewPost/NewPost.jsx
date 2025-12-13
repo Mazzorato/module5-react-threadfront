@@ -10,7 +10,7 @@ export function NewPost() {
       <form className="new-post-container">
         <div className="newPostCard">
           <input
-            class="new-post-input"
+            className="new-post-input"
             name="content"
             type="textarea"
             placeholder="Tapez votre post ici ..."
