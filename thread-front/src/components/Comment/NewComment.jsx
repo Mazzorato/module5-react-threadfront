@@ -1,3 +1,5 @@
+// A supprimer je pense
+
 import "./NewComment.css";
 
 export function NewComment() {

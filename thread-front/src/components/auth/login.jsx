@@ -1,14 +1,13 @@
 import "./login.css";
+import Title from "../shared/Title.jsx"; 
 
 export function Login() {
   return (
-    <div className="login">
-      <div className="title">
-        Titre
-      </div>
+    <div className="loginPage">
+       <Title title={"Connexion"} />
       <form className="loginForm" method="post">
         <input
-          className="email"
+          className="emailL zoneT"
           type="email"
           name="email"
           placeholder="e m a i l"
@@ -16,7 +15,7 @@ export function Login() {
         />
 
         <input
-          className="mdp"
+          className="mdpL zoneT"
           type="password"
           name="password"
           placeholder="* * * * * * * *"

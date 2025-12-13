@@ -1,24 +1,27 @@
 import "./NewPost.css";
+import Title from "../shared/Title.jsx";
+import NavBar from "../shared/NavBar.jsx";
 
 export function NewPost() {
   return (
     <div className="newPostPage">
-      <h1> New Post</h1>
+      <Title title={"New Post"} />
 
-      <form className="post-container">
-        <div className="postCard">
+      <form className="new-post-container">
+        <div className="newPostCard">
           <input
-            class="post-input"
+            class="new-post-input"
             name="content"
             type="textarea"
             placeholder="Tapez votre post ici ..."
           />
-          <p className="date">15:25 - 13 août 25</p>
+          <p className="newPostDate">15:25 - 13 août 25</p>
         </div>
-        <button className="btnPost" type="submit">
+        <button className="btnNewPost" type="submit">
           Poster !
         </button>
       </form>
+      <NavBar />
     </div>
   );
 }
