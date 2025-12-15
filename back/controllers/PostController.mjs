@@ -4,7 +4,9 @@ import { Comment } from "../models/CommentModel.mjs";
 // Equivalent du feed
 export async function getAllPosts(req, res) {
   try {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({
+    order: [['createdAt', 'DESC']],  // Trier par date décroissante 
+  });
     res.json(posts);
   } catch (err) {
     res.status(500).json({ error: "Failed to retrieve posts" });

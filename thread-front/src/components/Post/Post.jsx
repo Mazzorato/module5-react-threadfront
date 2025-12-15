@@ -5,14 +5,45 @@ import CommentCard from "../shared/CommentCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
 
 export function Post() {
+    
+    const { id } = useParams();
+    const [post, setPost] = useState([]);
+    function fetchPost() {
+        try {
+        fetch("http://localhost:3000/posts/"+id,{credentials: 'include'//regarder les cookies
+        })
+        .then((response) => response.json())
+        .then((postData) => setPost(postData))
+        .catch((error) => console.error("Error fetching post:", error));
+        } catch (error) {
+            console.error("Unexpected error:", error);
+        }
+        
+    }
+
+    useEffect(() => {
+         fetchPost();
+    }, [id]);
+  
+    const commentdivs = post.comments.map((comment) =>{
+            return(
+            <CommentCard 
+                key={comment.id}
+                author={comment.author} 
+                content={comment.content} 
+                date={comment.date} 
+            />)
+
+        } );
   return (
     <div className="PostPage">
       <Title title={"Post"} />
       <div className="postContainer">
         <PostCard
-          author={"@Ryu-du57"}
-          content={"Aujourd'hui je me suis promene sous la pluie."}
-          date={"11:50 12 dec 25"}
+          key={post.id}
+          author={post.author} 
+          content={post.content} 
+          date={post.date} 
           isOpen='true'
         />
         <p className="commentNumber">
@@ -27,32 +58,7 @@ export function Post() {
             required
           />
         </form>
-
-        <CommentCard
-          author={"@Sakura-chan"}
-          content={"Moi aussi j'aime la pluie !"}
-          date={"12:00 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Sakura-chan"}
-          content={"Moi aussi j'aime la pluie !"}
-          date={"12:00 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
+        {commentdivs}
       </div>
       <NavBar />
     </div>
