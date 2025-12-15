@@ -24,6 +24,8 @@ export function Post() {
     useEffect(() => {
          fetchPost();
     }, [id]);
+
+    //new comment a faire.... fetch(....url, {method: 'POST', body: JSON.stringify({content: commentContent})})
   
     const commentdivs = post.comments.map((comment) =>{
             return(
