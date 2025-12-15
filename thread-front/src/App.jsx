@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -9,13 +9,31 @@ import { Post } from "./components/Post/Post.jsx";
 import { NewPost } from "./components/NewPost/NewPost.jsx";
 import { NewComment } from "./components/Comment/NewComment.jsx";
 import { Profil } from "./components/profile/profile.jsx";
+import { Notif } from "./components/shared/notif.jsx";
 
 import HomePage from "./components/HomePage.jsx";
 
 function App() {
+  const [notifications, setNotifications] = useState([
+    { type: "success", message: "Bienvenue sur Thread !" },
+    { type: "error", message: "Bienvenue sur 2 !" },
+  ]);
+
+  function addNotif(message,type="success") {
+    const newNotif = {
+      type: type,
+      message: message,
+    };
+    setNotifications((prev) => [...prev, newNotif]);
+  }
+
   return (
     <>
       <BrowserRouter>
+        <Notif
+        notifications={notifications}
+        setNotifications={setNotifications}
+        />
         <Routes>
           <Route path="/" element={<HomePage />} />
 
