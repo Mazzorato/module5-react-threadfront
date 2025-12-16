@@ -10,7 +10,7 @@ export function Feed() {
   function fetchPost() {
     try {
       fetch("http://localhost:3000/posts/",{
-        credentials: 'include'//regarder les cookies
+        credentials: 'include'
       })
         .then((response) => response.json())
         .then((postData) => setPost(postData))
