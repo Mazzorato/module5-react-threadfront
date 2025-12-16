@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,13 +13,15 @@ import { Notif } from "./components/shared/notif.jsx";
 
 import HomePage from "./components/HomePage.jsx";
 
+export const NotifContext = createContext({});
+
 function App() {
   const [notifications, setNotifications] = useState([
     { type: "success", message: "Bienvenue sur Thread !" },
     { type: "error", message: "Bienvenue sur 2 !" },
   ]);
 
-  function addNotif(message,type="success") {
+  function addNotif(message, type = "success") {
     const newNotif = {
       type: type,
       message: message,
@@ -28,11 +30,12 @@ function App() {
   }
 
   return (
+    <NotifContext.Provider value={{ addNotif }}>
     <>
       <BrowserRouter>
         <Notif
-        notifications={notifications}
-        setNotifications={setNotifications}
+          notifications={notifications}
+          setNotifications={setNotifications}
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -47,6 +50,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
+    </NotifContext.Provider>
   );
 }
 

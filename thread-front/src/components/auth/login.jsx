@@ -1,7 +1,13 @@
 import "./login.css";
 import Title from "../shared/Title.jsx"; 
+import { useContext } from "react";
+import { NotifContext } from "../../App.jsx";
+
+
 
 export function Login() {
+  const { addNotif } = useContext(NotifContext);
+
   return (
     <div className="loginPage">
        <Title title={"Connexion"} />
