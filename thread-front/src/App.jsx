@@ -9,6 +9,7 @@ import { Post } from "./components/Post/Post.jsx";
 import { NewPost } from "./components/NewPost/NewPost.jsx";
 import { NewComment } from "./components/Comment/NewComment.jsx";
 import { Profil } from "./components/profile/profile.jsx";
+import { Settings } from "./components/settings/settings.jsx";
 
 import HomePage from "./components/HomePage.jsx";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/NewPost" element={<NewPost />} />
           <Route path="/NewComment" element={<NewComment />} />
           <Route path="/profile" element={<Profil />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </>

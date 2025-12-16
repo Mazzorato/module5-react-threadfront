@@ -10,7 +10,7 @@ export default function PostCard({ author, content, date, isOpen }) {
       <h2 className="post-author">{author}</h2>
       <p className="post-content">{content}</p>
       </div>
-      <p className="post-date">{date}</p>
+      <p className="post-date">{new Date(date)?.toLocaleString("fr-FR")}</p>
     </div>
   );
 }

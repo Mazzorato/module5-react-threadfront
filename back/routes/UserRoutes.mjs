@@ -10,6 +10,7 @@ router.post("/register", register);
 router.post("/login", login);
 router.post("/logout", logout);
 
-router.get("/users/:userId/posts", isLoggedInJWT(User), getPostsbyUserId);
+//router.get("/users/:userId/posts", isLoggedInJWT(User), getPostsbyUserId);
+router.get("/users/:userId/posts", getPostsbyUserId);
 
 export default router;

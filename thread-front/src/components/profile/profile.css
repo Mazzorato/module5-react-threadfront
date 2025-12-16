@@ -14,3 +14,18 @@
   align-self: flex-start;
   margin: 2rem 0 0 0;
 }
+
+.logoSetting {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+  height: 2rem;
+}
+
+.fakeHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+}
