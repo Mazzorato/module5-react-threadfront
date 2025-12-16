@@ -6,26 +6,34 @@ import Title from "../shared/Title.jsx";
 export function Register() {
   const navigate = useNavigate();
 
+  
+
   async function handleSubmit(event) {
     event.preventDefault();
+    
 
     const formData = new FormData(event.target);
-    const pseudo = formData.get("pseudo");
+    const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
-    const confirmPassword = formData.get("confirm_password");
+    const confirmPasswordValue = formData.get("confirmPassword");
+
+    if (password !== confirmPasswordValue) {
+      return;
+    }
 
     try {
-      const response = await fetch("http://localhost:3000/api/users/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: pseudo,
+          username: username,
           email: email,
           password: password,
-          confirmPassword: confirmPassword,
+          verifiedPassword: confirmPasswordValue,
         }),
       });
       if (response.ok) {
@@ -33,22 +41,22 @@ export function Register() {
         navigate("/login"); // Redirection vers la page de login
       } else {
         console.error("Erreur serveur lors de l'inscription");
-      }  
-      } catch (err) {
-        console.error(err);
       }
-    } 
-    return (
-      <div className="registerPage">
+    } catch (err) {
+      console.error("Erreur Fetch:", err);
+    }
+  }
+  return (
+    <div className="registerPage">
       <Title title={"Création de compte"} />
-      <form className="registerForm" onSubmit={handleSubmit}>
+      <form className="registerForm" method="post" onSubmit={handleSubmit}>
         <input
-          className="pseudoR zoneT"
+          className="usernameR zoneT"
           type="text"
-          name="pseudo"
+          name="username"
           placeholder="@Pseudo"
           required
-          />
+        />
 
         <input
           className="emailR zoneT"
@@ -69,7 +77,7 @@ export function Register() {
         <input
           className="confirmPasswordR zoneT"
           type="password"
-          name="confirm_password"
+          name="confirmPassword"
           placeholder="m o t   d e   p a s s e   e n c o r e"
           required
         />
@@ -80,6 +88,4 @@ export function Register() {
       </form>
     </div>
   );
-
 }
-
