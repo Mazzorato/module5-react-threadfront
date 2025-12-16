@@ -4,6 +4,7 @@ import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
 
+
 export function Feed() {
 
   const [post, setPost] = useState([]);
@@ -15,14 +16,15 @@ export function Feed() {
         .then((response) => response.json())
         .then((postData) => setPost(postData))
         .catch((error) => console.error("Error fetching post:", error));
-    } catch (error) {
-      console.error("Unexpected error:", error);
+      } catch (error) {
+        console.error("Unexpected error:", error);
+      }
+      
     }
-
-  }
-  useEffect(() => {
-    fetchPost();
-  }, []);
+    useEffect(() => {
+      fetchPost();
+    }, []);
+    
 
   const postDivs = post.map((post) => (
 
@@ -31,7 +33,7 @@ export function Feed() {
       id={post.id}
       author={post.author}
       content={post.content}
-      date={post.date}
+      date={new Date(post.createdAt)}
     />
   ));
 
