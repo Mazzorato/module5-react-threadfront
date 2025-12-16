@@ -3,6 +3,7 @@ import Title from "../shared/Title.jsx";
 import NavBar from "../shared/NavBar.jsx";
 
 export function NewPost() {
+  
   return (
     <div className="newPostPage">
       <Title title={"New Post"} />
