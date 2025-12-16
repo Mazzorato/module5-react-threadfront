@@ -28,6 +28,9 @@ export function Post() {
     fetchPost();
   }, [id]);
 
+  if (!post.comments) {
+    return <div>Loading...</div>;
+  }
   const commentdivs = post.comments.map((comment) => {
     return (
       <CommentCard

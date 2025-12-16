@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./Feed.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
