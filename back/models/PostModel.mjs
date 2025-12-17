@@ -13,7 +13,7 @@ export const Post = sequelize.define(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: { msg: "Veuillez remplir ce champ" },
         len: { args: [1, 200], msg: "1 a 200 caractères" },

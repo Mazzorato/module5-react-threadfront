@@ -1,8 +1,8 @@
 import "./NewPost.css";
 import Title from "../shared/Title.jsx";
 import NavBar from "../shared/NavBar.jsx";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import {  useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 export function NewPost() {
@@ -11,7 +11,11 @@ export function NewPost() {
   const { username } = useParams();
   const [newPost, setNewPost] = useState("");
 
-  function handleInputChange(e) {
+  // useEffect(() => {
+  //   onSubmit();
+  // }, [setNewPost]);
+
+  function handleInputChange(e){
     setNewPost(e.target.value);
   };
 
@@ -21,7 +25,7 @@ export function NewPost() {
     if (!newPost.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/posts/`, {
+      const response = await fetch(`http://localhost:3000/posts/create`, {
         method: 'POST',
         credentials: 'include',
         headers: {

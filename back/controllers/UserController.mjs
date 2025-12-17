@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken';
 export async function register(req, res) {
   try {
     const { username, email, password, verifiedPassword } = req.body;
+    console.log("Connexion ?");
+    
 
     //Vérification de la présence des champs requis
     if (!email || !password || !verifiedPassword || !username) {

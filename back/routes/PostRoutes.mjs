@@ -13,7 +13,7 @@ const router = Router();
 
 router.get("/", isLoggedInJWT(User), getAllPosts);
 router.get("/:postId", isLoggedInJWT(User),getPostbyId);
-router.post("/", isLoggedInJWT(User),createPost);
+router.post("/create", isLoggedInJWT(User),createPost);
 router.delete("/:postId", isLoggedInJWT(User),deletePost);
 
 router.post("/:postId/comments", isLoggedInJWT(User), createComment);

@@ -54,7 +54,7 @@ export function Register() {
           className="usernameR zoneT"
           type="text"
           name="username"
-          placeholder="@Pseudo"
+          placeholder="@Username"
           required
         />
 

@@ -6,6 +6,7 @@ import NavBar from "../shared/NavBar.jsx";
 import { useParams } from "react-router-dom";
 
 
+
 export function Feed() {
 
   const [post, setPost] = useState([]);
