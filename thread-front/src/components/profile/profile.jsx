@@ -5,13 +5,15 @@ import "./profile.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
+import { useParams } from "react-router-dom";
 
 import logoSetting from "../../assets/logo-setting.svg";
 
 export function Profil() {
   const navigate = useNavigate();
+  
   const userId = 3;
-  const userName = "Billy";
+  const {userName} = useParams();
 
   const [firstPost, setFirstPost] = useState({});
   const [posts, setPosts] = useState([]);
