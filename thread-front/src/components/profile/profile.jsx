@@ -10,7 +10,7 @@ import logoSetting from "../../assets/logo-setting.svg";
 
 export function Profil() {
   const navigate = useNavigate();
-  const userId = 1;
+  const userId = 3;
   const userName = "Billy";
 
   const [firstPost, setFirstPost] = useState({});
@@ -27,9 +27,7 @@ export function Profil() {
       );
       let posts = await response.json();
 
-      if (posts.length === 0) {
-        navigate("/NewPost")
-      } else {
+      if (posts.length > 0) {
         posts = posts.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -46,6 +44,10 @@ export function Profil() {
     navigate("/settings");
   };
 
+  const goToNewPost = () => {
+    navigate("/NewPost");
+  };
+
   return (
     <div className="ProfilePage">
       <Title title={"Profile"} />
@@ -59,25 +61,36 @@ export function Profil() {
             onClick={goToSettings}
           />
         </div>
-        <PostCard
-          key={firstPost.id}
-          author={firstPost.title}
-          content={firstPost.content}
-          date={firstPost.createdAt}
-        />
+        {posts.length > 0 ? (
+          <PostCard
+            key={firstPost.id}
+            author={firstPost.title}
+            content={firstPost.content}
+            date={firstPost.createdAt}
+          />
+        ) : null}
         <p className="postNumber">
           {posts.length} <i className="fa-brands fa-facebook-messenger"></i>
         </p>
-        {posts.map((post) => {
-          return (
-            <PostCard
-              key={post.id}
-              author={post.title}
-              content={post.content}
-              date={post.createdAt}
-            />
-          );
-        })}
+        {posts.length > 0 ? (
+          posts.map((post) => {
+            return (
+              <PostCard
+                key={post.id}
+                author={post.title}
+                content={post.content}
+                date={post.createdAt}
+              />
+            );
+          })
+        ) : (
+          <button className="btnEmptyProfil" onClick={goToNewPost}>
+            <div className="addPostIfNull">
+              <img src="../../src/assets/Logo/logo-newpost.svg" />{" "}
+              <p> Ajouter un post </p>
+            </div>
+          </button>
+        )}
       </div>
       <NavBar />
     </div>
