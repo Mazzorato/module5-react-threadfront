@@ -18,10 +18,7 @@ export const NotifContext = createContext({});
 
 function App() {
 
-  const [notifications, setNotifications] = useState([
-    { type: "success", message: "Bienvenue sur Thread !" },
-    { type: "error", message: "Bienvenue sur 2 !" },
-  ]);
+  const [notifications, setNotifications] = useState([]);
 
   function addNotif(message, type = "success") {
     const newNotif = {

@@ -34,8 +34,8 @@ export async function register(req, res) {
       userId: user.id,
     });
   } catch (error) {
-    if (error.name === "SequelizeUniqueContraintError") {
-      return res.status(409).json({ message: "Email already exists" });
+    if (error.name === "SequelizeUniqueConstraintError") {
+      return res.status(409).json({ message: "Cet email existe déjà" });
     }
     return res.status(500).json({ message: "Error registering user " });
   }

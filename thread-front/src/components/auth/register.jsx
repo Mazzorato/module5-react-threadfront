@@ -2,10 +2,12 @@
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 import Title from "../shared/Title.jsx";
+import { useContext } from "react";
+import { NotifContext } from "../../App.jsx";
 
 export function Register() {
   const navigate = useNavigate();
-
+  const { addNotif } = useContext(NotifContext);
   
 
   async function handleSubmit(event) {
@@ -19,7 +21,7 @@ export function Register() {
     const confirmPasswordValue = formData.get("confirmPassword");
 
     if (password !== confirmPasswordValue) {
-      return;
+      return addNotif("Les mots de passe ne correspondent pas", "error");
     }
 
     try {
@@ -36,14 +38,24 @@ export function Register() {
           verifiedPassword: confirmPasswordValue,
         }),
       });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        return addNotif(errorData.message, "error");
+      }
+
       if (response.ok) {
         console.log("Inscription réussie");
+        addNotif("Inscription réussie", "success");
         navigate("/login"); // Redirection vers la page de login
+
       } else {
         console.error("Erreur serveur lors de l'inscription");
+        addNotif("Erreur serveur lors de l'inscription", "error");
       }
     } catch (err) {
       console.error("Erreur Fetch:", err);
+      addNotif("Erreur Réseau lors de l'inscription", "error");
     }
   }
   return (

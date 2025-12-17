@@ -34,14 +34,17 @@ export function Login() {
       });
       if (response.ok) {
         console.log("Connexion réussie");
+        addNotif("Connexion réussie", "success");
         navigate("/feed");
       } else {
         const errorData = await response.json();
         console.error("Erreur connexion :", errorData);
+        addNotif("Erreur connexion ", "error");
       }
 
     } catch (err) {
       console.error("Erreur Réseau :", err);
+      addNotif("Email ou mot de passe incorrect", "error");
     }
   }
 
