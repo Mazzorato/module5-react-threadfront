@@ -23,6 +23,8 @@ export function Post() {
     }
 
   }
+  console.log(post);
+  
 
   useEffect(() => {
     fetchPost();

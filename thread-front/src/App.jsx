@@ -26,9 +26,9 @@ function App() {
           {/*<Route element={<PrivateRoutes />}>*/}
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/Feed" element={<Feed />} />
+            <Route path="/Feed/:username" element={<Feed />} />
             <Route path="/Post/:id" element={<Post />} />
-            <Route path="/NewPost" element={<NewPost />} />
+            <Route path="/NewPost/:username" element={<NewPost />} />
             <Route path="/NewComment" element={<NewComment />} />
             <Route path="/profile" element={<Profil />} />
           {/*</Route>*/}

@@ -1,14 +1,14 @@
 import "./NewPost.css";
 import Title from "../shared/Title.jsx";
 import NavBar from "../shared/NavBar.jsx";
-import { use, useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export function NewPost() {
 
   const navigate = useNavigate();
-
+  const { username } = useParams();
   const [newPost, setNewPost] = useState("");
 
   function handleInputChange(e) {
@@ -29,7 +29,7 @@ export function NewPost() {
         },
         body: JSON.stringify(
           {
-            title: "Post Title",
+            title: username,
             content: newPost
           })
       });
@@ -37,7 +37,7 @@ export function NewPost() {
       if (response.ok) {
         setNewPost("");
         console.log("Post envoyé avec succès !");
-        navigate("/Feed");
+        navigate("/Feed/" + username);
 
       }
     } catch (error) {
@@ -66,7 +66,7 @@ export function NewPost() {
           Poster !
         </button>
       </form>
-      <NavBar />
+      <NavBar username={username}/>
     </div>
   );
 }
