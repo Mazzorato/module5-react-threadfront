@@ -3,36 +3,38 @@ import "./Feed.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
+import { useParams } from "react-router-dom";
+
 
 
 export function Feed() {
 
   const [post, setPost] = useState([]);
+  const { username } = useParams();
+
   function fetchPost() {
     try {
-      fetch("http://localhost:3000/posts/",{
-        credentials: 'include'
-      })
+      fetch("http://localhost:3000/posts/", { credentials: 'include' })
         .then((response) => response.json())
         .then((postData) => setPost(postData))
         .catch((error) => console.error("Error fetching post:", error));
     } catch (error) {
       console.error("Unexpected error:", error);
     }
-
   }
+
   useEffect(() => {
     fetchPost();
   }, []);
 
   const postDivs = post.map((post) => (
 
-    <PostCard 
+    <PostCard
       key={post.id}
       id={post.id}
-      author={post.author}
+      author={post.title}
       content={post.content}
-      date={post.date}
+      date={new Date(post.createdAt)}
     />
   ));
 
@@ -44,7 +46,7 @@ export function Feed() {
       <div className="feedContainer">
         {postDivs}
       </div>
-      <NavBar />
+      <NavBar username={username} />
     </div>
   );
 }

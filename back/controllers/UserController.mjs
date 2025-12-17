@@ -61,7 +61,11 @@ export async function login(req, res) {
     console.log("ça passe là")
 
     res.cookie("token", token, { httpOnly: true });
-    res.json({ message: "Connexion réussie" });
+    res.json({ message: "Connexion réussie",
+      username: user.username
+     }
+      
+    );
   } catch (error) {
     res
       .status(500)

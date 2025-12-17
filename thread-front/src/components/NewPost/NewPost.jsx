@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export function NewPost() {
 
   const navigate = useNavigate();
-
+  const { username } = useParams();
   const [newPost, setNewPost] = useState("");
 
   // useEffect(() => {
@@ -32,14 +32,16 @@ export function NewPost() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(
-          { title: null,
-          content: newPost })
+          {
+            title: username,
+            content: newPost
+          })
       });
 
       if (response.ok) {
         setNewPost("");
         console.log("Post envoyé avec succès !");
-        navigate("/Feed");
+        navigate("/Feed/" + username);
 
       }
     } catch (error) {
@@ -68,7 +70,7 @@ export function NewPost() {
           Poster !
         </button>
       </form>
-      <NavBar />
+      <NavBar username={username}/>
     </div>
   );
 }

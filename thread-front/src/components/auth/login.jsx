@@ -34,7 +34,8 @@ export function Login() {
       });
       if (response.ok) {
         console.log("Connexion réussie");
-        navigate("/feed");
+        const {username} = await response.json();
+        navigate("/feed/" + username);
       } else {
         const errorData = await response.json();
         console.error("Erreur connexion :", errorData);
