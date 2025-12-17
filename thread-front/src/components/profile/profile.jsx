@@ -11,7 +11,7 @@ import logoSetting from "../../assets/logo-setting.svg";
 export function Profil() {
   const navigate = useNavigate();
   const userId = 1;
-  const userName = 'Billy'
+  const userName = "Billy";
 
   const [firstPost, setFirstPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -27,12 +27,16 @@ export function Profil() {
       );
       let posts = await response.json();
 
-      posts = posts.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
+      if (posts.length === 0) {
+        navigate("/NewPost")
+      } else {
+        posts = posts.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
 
-      setFirstPost(posts[0]);
-      setPosts(posts);
+        setFirstPost(posts[0]);
+        setPosts(posts);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -48,7 +52,12 @@ export function Profil() {
       <div className="profilContainer">
         <div className="fakeHeader">
           <h2>{userName}</h2>
-          <img className="logoSetting" src={logoSetting} alt="" onClick={goToSettings} />
+          <img
+            className="logoSetting"
+            src={logoSetting}
+            alt=""
+            onClick={goToSettings}
+          />
         </div>
         <PostCard
           key={firstPost.id}
