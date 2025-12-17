@@ -10,7 +10,11 @@ import { Post } from "./components/Post/Post.jsx";
 import { NewPost } from "./components/NewPost/NewPost.jsx";
 import { NewComment } from "./components/Comment/NewComment.jsx";
 import { Profil } from "./components/profile/profile.jsx";
+
+import { Settings } from "./components/settings/settings.jsx";
+
 import { Notif } from "./components/shared/notif.jsx";
+
 
 import HomePage from "./components/HomePage.jsx";
 
@@ -53,11 +57,13 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/Feed/:username" element={<Feed />} />
             <Route path="/Post/:id" element={<Post />} />
-            <Route path="/NewPost/:username" element={<NewPost />} />
+           <Route path="/NewPost/:username" element={<NewPost />} />
             <Route path="/NewComment" element={<NewComment />} />
             <Route path="/profile" element={<Profil />} />
+              <Route path="/settings" element={<Settings />} />
           {/*</Route>*/}
           <Route path="/login" element={<Login />} />
+
         </Routes>
       </BrowserRouter>
     </>
