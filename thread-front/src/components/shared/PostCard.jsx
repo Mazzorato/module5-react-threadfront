@@ -1,38 +1,50 @@
 import "./PostCard.css";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/dateFormat";
 
-export default function PostCard({ author, content, date, isOpen, id }) {
-
+export default function PostCard({
+  author,
+  content,
+  date,
+  isOpen,
+  id,
+  isOwner,
+  reloadPosts,
+}) {
   const navigate = useNavigate();
+
   function handleClick() {
-    navigate(`/post/${id}`);
-  };
+    if (!isOpen) {
+      navigate(`/post/${id}`);
+    }
+  }
 
-  function formatDate(date) {
-    
-    const heurs = date.getUTCHours().toString().padStart(2, '0');
-    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-    const jour = date.getUTCDate();
-  
-    const mois = [
-        'janv', 'fev', 'mar', 'avr', 'mai', 'juin',
-        'juil', 'aout', 'sep', 'oct', 'nov', 'dec'
-    ];
-    const singleMois = mois[date.getUTCMonth()];
-    const year = date.getUTCFullYear().toString().slice(-2);
-  
-    return `${heurs}:${minutes} ${jour} ${singleMois} ${year}`;
-
+  function handleDelete() {
+    if (window.confirm("Supprimer ce post ?")) {
+      fetch(`http://localhost:3000/posts/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      }).then((result) => {
+        reloadPosts();
+      });
+    }
   }
 
   return (
-    <div className="post-card"
-      style={{ "minHeight": `${isOpen ? "8rem" : ""}` }}
-      onClick={handleClick}>
+    <div className="post-card" style={{ minHeight: `${isOpen ? "8rem" : ""}` }}>
+      <div className="post-open" onClick={handleClick}>
+        <h2 className="post-author">{author}</h2>
+        <p className="post-content">{content}</p>
+        <p className="post-date">{formatDate(new Date(date))}</p>
+      </div>
 
-      <h2 className="post-author">{author}</h2>
-      <p className="post-content">{content}</p>
-      <p className="post-date">{formatDate(date)}</p>
+      {isOwner ? (
+        <img
+          onClick={handleDelete}
+          className="postrash"
+          src="../../src/assets/trash-solid-full.svg"
+        />
+      ) : null}
     </div>
   );
 }

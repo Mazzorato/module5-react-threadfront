@@ -1,14 +1,13 @@
 import { User } from "../models/UserModel.mjs";
 import { JWT_SECRET } from "../config/config.mjs";
 import bcrypt from "bcryptjs";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 //Création d'un compte utilisateur (route publique)
 export async function register(req, res) {
   try {
     const { username, email, password, verifiedPassword } = req.body;
     console.log("Connexion ?");
-    
 
     //Vérification de la présence des champs requis
     if (!email || !password || !verifiedPassword || !username) {
@@ -36,8 +35,8 @@ export async function register(req, res) {
       userId: user.id,
     });
   } catch (error) {
-    if (error.name === "SequelizeUniqueContraintError") {
-      return res.status(409).json({ message: "Email already exists" });
+    if (error.name === "SequelizeUniqueConstraintError") {
+      return res.status(409).json({ message: "Cet email existe déjà" });
     }
     return res.status(500).json({ message: "Error registering user " });
   }
@@ -54,18 +53,16 @@ export async function login(req, res) {
       return res.status(401).json({ error: "Email ou mot de passe incorrect" });
     }
 
-    console.log("ça passe ici", JWT_SECRET)
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    console.log("ça passe là")
-
-    res.cookie("token", token, { httpOnly: true });
-    res.json({ message: "Connexion réussie",
-      username: user.username
-     }
-      
+    const token = jwt.sign(
+      { userId: user.id, username: user.username },
+      JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
     );
+
+    res.cookie("token", token, { httpOnly: true, sameSite: "lax" });
+    res.json({ message: "Connexion réussie" });
   } catch (error) {
     res
       .status(500)
@@ -76,4 +73,8 @@ export async function login(req, res) {
 export async function logout(req, res) {
   res.clearCookie("token");
   res.json({ message: "Logout successful" });
+}
+
+export async function me(req, res) {
+  res.json({ username: req.user.username });
 }

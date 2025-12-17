@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../auth/authContext.jsx";
 import "./profile.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
-import { useParams } from "react-router-dom";
 
 import logoSetting from "../../assets/logo-setting.svg";
 
 export function Profil() {
   const navigate = useNavigate();
-  
-  const userId = 3;
-  const {userName} = useParams();
+  const { user } = useAuth();
 
   const [firstPost, setFirstPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -24,9 +22,9 @@ export function Profil() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/users/${userId}/posts`
-      );
+      const response = await fetch(`http://localhost:3000/posts/me`, {
+        credentials: "include",
+      });
       let posts = await response.json();
 
       if (posts.length > 0) {
@@ -47,7 +45,7 @@ export function Profil() {
   };
 
   const goToNewPost = () => {
-    navigate("/NewPost");
+    navigate("/newpost");
   };
 
   return (
@@ -55,7 +53,7 @@ export function Profil() {
       <Title title={"Profile"} />
       <div className="profilContainer">
         <div className="fakeHeader">
-          <h2>{userName}</h2>
+          <h2>{user?.username}</h2>
           <img
             className="logoSetting"
             src={logoSetting}
@@ -66,7 +64,7 @@ export function Profil() {
         {posts.length > 0 ? (
           <PostCard
             key={firstPost.id}
-            author={firstPost.title}
+            author={firstPost.user.username}
             content={firstPost.content}
             date={firstPost.createdAt}
           />
@@ -79,7 +77,7 @@ export function Profil() {
             return (
               <PostCard
                 key={post.id}
-                author={post.title}
+                author={post.user.username}
                 content={post.content}
                 date={post.createdAt}
               />

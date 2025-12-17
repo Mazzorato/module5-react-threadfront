@@ -9,9 +9,9 @@ export function Settings() {
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:3000/logout')
+      await fetch("http://localhost:3000/logout", { method: "POST", credentials:'include' });
       navigate("/login");
-    } catch(error) {
+    } catch (error) {
       console.error("Error logout:", error);
     }
   };

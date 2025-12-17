@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export function Post() {
-
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -21,10 +20,7 @@ export function Post() {
     } catch (error) {
       console.error("Unexpected error:", error);
     }
-
   }
-  console.log(post);
-  
 
   useEffect(() => {
     fetchPost();
@@ -33,15 +29,18 @@ export function Post() {
   if (!post.comments) {
     return <div>Loading...</div>;
   }
+
   const commentdivs = post.comments.map((comment) => {
     return (
       <CommentCard
         key={comment.id}
-        author={post.title}
+        id={comment.id}
+        author={comment.user.username}
         content={comment.content}
         date={new Date(comment.createdAt)}
+        isOwner={comment.isOwner}
+        reloadPost={fetchPost}
       />)
-
   });
   
   function handleInputChange(e){
@@ -78,14 +77,14 @@ export function Post() {
       <div className="postContainer">
         <PostCard
           key={post.id}
-          author={post.title}
+          author={post.author}
           content={post.content}
           date={new Date(post.createdAt)}
           isOpen='true'
         />
 
         <p className="commentNumber">
-          XX <i className="fa-solid fa-message"></i>
+          {post.comments.length} <i className="fa-solid fa-message"></i>
         </p>
 
         <form className="commentForm" onSubmit={onSubmit}>

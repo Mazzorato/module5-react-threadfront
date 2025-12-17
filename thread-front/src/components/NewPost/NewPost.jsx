@@ -4,6 +4,7 @@ import NavBar from "../shared/NavBar.jsx";
 import {  useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/dateFormat.jsx";
 
 export function NewPost() {
 
@@ -38,7 +39,7 @@ export function NewPost() {
       if (response.ok) {
         setNewPost("");
         console.log("Post envoyé avec succès !");
-        navigate("/Feed/" + username);
+        navigate("/feed");
 
       }
     } catch (error) {
@@ -61,7 +62,7 @@ export function NewPost() {
             value={newPost}
             onChange={handleInputChange}
           />
-          <p className="newPostDate">15:25 - 13 août 25</p>
+          <p className="newPostDate">{formatDate(new Date())}</p>
         </div>
         <button className="btnNewPost" type="submit" onClick={onSubmit} style={{ display: 'none' }}>
           Poster !
