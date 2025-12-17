@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken';
 export async function register(req, res) {
   try {
     const { username, email, password, verifiedPassword } = req.body;
+    console.log("Connexion ?");
+    
 
     //Vérification de la présence des champs requis
     if (!email || !password || !verifiedPassword || !username) {
@@ -59,7 +61,11 @@ export async function login(req, res) {
     console.log("ça passe là")
 
     res.cookie("token", token, { httpOnly: true });
-    res.json({ message: "Connexion réussie" });
+    res.json({ message: "Connexion réussie",
+      username: user.username
+     }
+      
+    );
   } catch (error) {
     res
       .status(500)

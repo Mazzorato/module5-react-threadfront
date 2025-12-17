@@ -4,7 +4,9 @@ import { Comment } from "../models/CommentModel.mjs";
 // Equivalent du feed
 export async function getAllPosts(req, res) {
   try {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({
+    order: [['createdAt', 'DESC']],  // Trier par date décroissante 
+  });
     res.json(posts);
   } catch (err) {
     res.status(500).json({ error: "Failed to retrieve posts" });
@@ -42,7 +44,7 @@ export async function getPostsbyUserId(req, res) {
   }
 }
 
-export function createPost(req, res) {
+export async function createPost(req, res) {
   try {
     const { title, content } = req.body;
     const user_id = req.user.id;
@@ -53,7 +55,7 @@ export function createPost(req, res) {
         message: "Le titre ou contenu du post est invalide.",
       });
     } else {
-      const post = Post.create({
+      const post = await Post.create({
         title,
         content,
         user_id,
