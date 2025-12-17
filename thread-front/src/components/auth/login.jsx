@@ -1,8 +1,15 @@
 import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 import Title from "../shared/Title.jsx"; 
+import { useContext } from "react";
+import { NotifContext } from "../../App.jsx";
+
+
 
 export function Login() {
+
+  const { addNotif } = useContext(NotifContext);
+
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
