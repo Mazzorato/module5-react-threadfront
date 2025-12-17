@@ -1,8 +1,7 @@
 .notifContainer {
   position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 30%; 
+  right: 10px;  
   z-index: 9999;
 }
 
