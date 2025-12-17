@@ -3,56 +3,101 @@ import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import CommentCard from "../shared/CommentCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export function Post() {
+
+  const { id } = useParams();
+  const [post, setPost] = useState([]);
+  const [newComment, setNewComment] = useState("");
+
+  function fetchPost() {
+    try {
+      fetch("http://localhost:3000/posts/" + id, { credentials: 'include' })
+        .then((response) => response.json())
+        .then((postData) => setPost(postData))
+        .catch((error) => console.error("Error fetching post:", error));
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    }
+
+  }
+
+  useEffect(() => {
+    fetchPost();
+  }, [id]);
+
+  const commentdivs = post.comments.map((comment) => {
+    return (
+      <CommentCard
+        key={comment.id}
+        author={comment.author}
+        content={comment.content}
+        date={comment.date}
+      />)
+
+  });
+  
+  function handleInputChange(e){
+    setNewComment(e.target.value);
+  };
+
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    if (!newComment.trim()) return;
+
+    try {
+      const response = await fetch(`http://localhost:3000/posts/${id}/comments`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: newComment })
+      });
+
+      if (response.ok) {
+        setNewComment("");
+        fetchPost();
+      }
+    } catch (error) {
+      console.error("Error al enviar comentario:", error);
+    }
+  };
+
   return (
     <div className="PostPage">
       <Title title={"Post"} />
       <div className="postContainer">
         <PostCard
-          author={"@Ryu-du57"}
-          content={"Aujourd'hui je me suis promene sous la pluie."}
-          date={"11:50 12 dec 25"}
+          key={post.id}
+          author={post.author}
+          content={post.content}
+          date={post.date}
           isOpen='true'
         />
+
         <p className="commentNumber">
           XX <i className="fa-solid fa-message"></i>
         </p>
-        <form className="commentForm" method="post">
+
+        <form className="commentForm" onSubmit={onSubmit}>
           <input
             className="comment-container"
             type="textarea"
             name="comment"
             placeholder="Tapez votre commentaire ici ..."
+            value={newComment}
+            onChange={handleInputChange}
             required
           />
+        <button type="submit" onClick={onSubmit} style={{ display: 'none' }}></button>{/*button caché pour permettre la soumission avec "Enter"*/}
         </form>
 
-        <CommentCard
-          author={"@Sakura-chan"}
-          content={"Moi aussi j'aime la pluie !"}
-          date={"12:00 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Sakura-chan"}
-          content={"Moi aussi j'aime la pluie !"}
-          date={"12:00 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
-        <CommentCard
-          author={"@Kenjiro"}
-          content={"La pluie c'est la vie."}
-          date={"12:05 12 dec 25"}
-        />
+        {commentdivs}
+
       </div>
       <NavBar />
     </div>

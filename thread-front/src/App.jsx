@@ -1,7 +1,8 @@
-import { createContext, useState } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { createContext, useState } from "react";
+
+import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { Register } from "./components/auth/register.jsx";
 import { Login } from "./components/auth/login.jsx";
 import { Feed } from "./components/Feed/Feed.jsx";
@@ -16,6 +17,7 @@ import HomePage from "./components/HomePage.jsx";
 export const NotifContext = createContext({});
 
 function App() {
+
   const [notifications, setNotifications] = useState([
     { type: "success", message: "Bienvenue sur Thread !" },
     { type: "error", message: "Bienvenue sur 2 !" },
@@ -29,6 +31,14 @@ function App() {
     setNotifications((prev) => [...prev, newNotif]);
   }
 
+  // Route protection example
+  /*const PrivateRoutes = () => {
+    let auth = { 'token': true }
+    return (
+      auth.token ? <Outlet /> : <Navigate to='/login' />
+    )
+  }*/
+
   return (
     <NotifContext.Provider value={{ addNotif }}>
     <>
@@ -38,15 +48,16 @@ function App() {
           setNotifications={setNotifications}
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-
-          <Route path="/register" element={<Register />} />
+          {/*<Route element={<PrivateRoutes />}>*/}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/Feed" element={<Feed />} />
+            <Route path="/Post/:id" element={<Post />} />
+            <Route path="/NewPost" element={<NewPost />} />
+            <Route path="/NewComment" element={<NewComment />} />
+            <Route path="/profile" element={<Profil />} />
+          {/*</Route>*/}
           <Route path="/login" element={<Login />} />
-          <Route path="/Feed" element={<Feed />} />
-          <Route path="/Post" element={<Post />} />
-          <Route path="/NewPost" element={<NewPost />} />
-          <Route path="/NewComment" element={<NewComment />} />
-          <Route path="/profile" element={<Profil />} />
         </Routes>
       </BrowserRouter>
     </>

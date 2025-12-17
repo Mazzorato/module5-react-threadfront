@@ -1,3 +1,4 @@
+import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 import Title from "../shared/Title.jsx"; 
 import { useContext } from "react";
@@ -6,13 +7,49 @@ import { NotifContext } from "../../App.jsx";
 
 
 export function Login() {
+
   const { addNotif } = useContext(NotifContext);
-  
+
+  const navigate = useNavigate();
+
+  async function handleSubmit(event) {
+    event. preventDefault();
+
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+
+      const response = await fetch("http://localhost:3000/login",{
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      if (response.ok) {
+        console.log("Connexion réussie");
+        navigate("/feed");
+      } else {
+        const errorData = await response.json();
+        console.error("Erreur connexion :", errorData);
+      }
+
+    } catch (err) {
+      console.error("Erreur Réseau :", err);
+    }
+  }
+
 
   return (
     <div className="loginPage">
        <Title title={"Connexion"} />
-      <form className="loginForm" method="post">
+      <form className="loginForm" method="post" onSubmit={handleSubmit}>
         <input
           className="emailL zoneT"
           type="email"
@@ -34,9 +71,9 @@ export function Login() {
         </button>
       </form>
 
-      <a className="lien" href="#">
+      <Link className="lien" to="/register">
         Se créer un compte
-      </a>
+      </Link>
     </div>
   );
 }
