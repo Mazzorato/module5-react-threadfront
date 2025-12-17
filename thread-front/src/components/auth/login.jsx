@@ -7,6 +7,7 @@ import { NotifContext } from "../../App.jsx";
 
 export function Login() {
   const { addNotif } = useContext(NotifContext);
+  
 
   return (
     <div className="loginPage">
