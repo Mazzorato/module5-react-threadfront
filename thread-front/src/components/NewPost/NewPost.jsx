@@ -2,7 +2,7 @@ import "./NewPost.css";
 import Title from "../shared/Title.jsx";
 import NavBar from "../shared/NavBar.jsx";
 import {  useState } from "react";
-
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export function NewPost() {
@@ -11,9 +11,6 @@ export function NewPost() {
   const { username } = useParams();
   const [newPost, setNewPost] = useState("");
 
-  // useEffect(() => {
-  //   onSubmit();
-  // }, [setNewPost]);
 
   function handleInputChange(e){
     setNewPost(e.target.value);
