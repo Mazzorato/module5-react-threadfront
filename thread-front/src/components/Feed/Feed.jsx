@@ -8,30 +8,29 @@ import NavBar from "../shared/NavBar.jsx";
 export function Feed() {
 
   const [post, setPost] = useState([]);
+  
   function fetchPost() {
     try {
-      fetch("http://localhost:3000/posts/",{
-        credentials: 'include'
-      })
+      fetch("http://localhost:3000/posts/", {credentials: 'include'})
         .then((response) => response.json())
         .then((postData) => setPost(postData))
         .catch((error) => console.error("Error fetching post:", error));
-      } catch (error) {
-        console.error("Unexpected error:", error);
-      }
-      
+    } catch (error) {
+      console.error("Unexpected error:", error);
     }
-    useEffect(() => {
-      fetchPost();
-    }, []);
-    
+  }
+  
+  useEffect(() => {
+    fetchPost();
+  }, []);
 
+  console.log(post);
   const postDivs = post.map((post) => (
 
-    <PostCard 
+    <PostCard
       key={post.id}
       id={post.id}
-      author={post.author}
+      author={post.title}
       content={post.content}
       date={new Date(post.createdAt)}
     />

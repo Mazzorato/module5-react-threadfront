@@ -35,9 +35,9 @@ export function Post() {
     return (
       <CommentCard
         key={comment.id}
-        author={comment.author}
+        author={post.title}
         content={comment.content}
-        date={comment.date}
+        date={new Date(comment.createdAt)}
       />)
 
   });
@@ -76,9 +76,9 @@ export function Post() {
       <div className="postContainer">
         <PostCard
           key={post.id}
-          author={post.author}
+          author={post.title}
           content={post.content}
-          date={post.date}
+          date={new Date(post.createdAt)}
           isOpen='true'
         />
 

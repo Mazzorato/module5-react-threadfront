@@ -11,11 +11,7 @@ export function NewPost() {
 
   const [newPost, setNewPost] = useState("");
 
-  // useEffect(() => {
-  //   onSubmit();
-  // }, [setNewPost]);
-
-  function handleInputChange(e){
+  function handleInputChange(e) {
     setNewPost(e.target.value);
   };
 
@@ -32,8 +28,10 @@ export function NewPost() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(
-          { title: "Post Title",
-          content: newPost })
+          {
+            title: "Post Title",
+            content: newPost
+          })
       });
 
       if (response.ok) {
