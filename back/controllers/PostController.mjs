@@ -5,7 +5,12 @@ import { User } from "../models/UserModel.mjs";
 // Equivalent du feed
 export async function getAllPosts(req, res) {
   try {
+    /* const page = parseInt(request.query.page)  1;
+    const limit = parseInt(request.query.limit)  10;
+    const offset = (page - 1) * limit;*/
     const posts = await Post.findAll({
+      /*limit,
+      offset,*/
       order: [["createdAt", "DESC"]], // Trier par date décroissante
       include: [
         {
@@ -21,12 +26,20 @@ export async function getAllPosts(req, res) {
       });
     });
 
-    res.json(posts);
+      /*const total = await Post.count();*/
+    res.json(posts
+    /*{
+      posts,
+      hasMore: offset + posts.length < total,
+    }*/
+    );
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Failed to retrieve posts" });
   }
 }
+
+
 
 export async function getMyPosts(req, res) {
   try {
