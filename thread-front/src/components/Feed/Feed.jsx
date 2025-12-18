@@ -15,7 +15,7 @@ export function Feed() {
     try {
       fetch("http://localhost:3000/posts?page=${page}&limit=10", { credentials: "include" })
         .then((response) => response.json())
-        .then((postData) => setPosts((prev) => [...prev, ...posts]))
+        .then((posts) => setPosts((prev) => [...prev, ...posts]))
         .catch((error) => console.error("Error fetching post:", error));
       } catch (error) {
         console.error("Unexpected error:", error);
