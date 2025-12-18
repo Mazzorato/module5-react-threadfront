@@ -1,10 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location)
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,6 +16,9 @@ export function AuthProvider({ children }) {
       credentials: "include",
     })
       .then((res) => {
+        if (location.pathname == "/register") {
+          return null;
+        }
         if (res.status === 401) {
           navigate("/login");
           return null;
