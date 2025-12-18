@@ -40,7 +40,13 @@ export async function getMyPosts(req, res) {
           attributes: ["username"],
         },
       ],
+    }).then((posts) => {
+      return posts.map((post) => {
+        post.get().isOwner = post.user_id === req.user.id ? true : false;
+        return post.get();
+      });
     });
+    
     res.json(posts);
   } catch (err) {
     console.log(err);

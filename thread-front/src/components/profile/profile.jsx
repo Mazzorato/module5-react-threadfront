@@ -26,7 +26,7 @@ export function Profil() {
         credentials: "include",
       });
       let posts = await response.json();
-
+      console.log(posts)
       if (posts.length > 0) {
         posts = posts.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -64,9 +64,12 @@ export function Profil() {
         {posts.length > 0 ? (
           <PostCard
             key={firstPost.id}
+            id={firstPost.id}
             author={firstPost.user.username}
             content={firstPost.content}
-            date={firstPost.createdAt}
+            date={new Date(firstPost.createdAt)}
+            isOwner={firstPost.isOwner}
+            reloadPosts={fetchPosts}
           />
         ) : null}
         <p className="postNumber">
@@ -77,9 +80,12 @@ export function Profil() {
             return (
               <PostCard
                 key={post.id}
+                id={post.id}
                 author={post.user.username}
                 content={post.content}
-                date={post.createdAt}
+                date={new Date(post.createdAt)}
+                isOwner={post.isOwner}
+                reloadPosts={fetchPosts}
               />
             );
           })
