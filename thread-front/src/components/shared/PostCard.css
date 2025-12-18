@@ -1,13 +1,14 @@
 .post-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border: 1px solid #0f0f0f;
   border-radius: 20px;
   padding: 5px;
   margin: 10px auto;
   background: linear-gradient(135deg, #0d0d0d, #2f2f2f);
-  width: 100%;
+  width: 17rem;
   text-align: left;
+  align-items: center;
   justify-content: space-between;
 }
 .post-author {
@@ -20,13 +21,23 @@
 }
 
 .post-content {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.6;
   color: white;
   margin: 0 0 0 5px;
 }
 .post-date {
-  font-size: 8px;
+  font-size: 10px;
   color: gray;
   margin: 0 0 0 5px;
+}
+
+.post-open {
+  flex: 1;
+}
+
+.postrash {
+  height: 1.7rem;
+  filter: invert(1);
+  cursor: pointer;
 }

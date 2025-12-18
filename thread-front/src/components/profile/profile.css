@@ -7,10 +7,41 @@
 .profilContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 3rem;
+  align-items: center;
+ 
 }
 
 .postNumber {
   align-self: flex-start;
   margin: 2rem 0 0 0;
+}
+
+.logoSetting {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+  height: 2rem;
+}
+
+.fakeHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+}
+
+.addPostIfNull {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.btnEmptyProfil {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+  width: 6.5rem;
+  height: 3.5rem;
 }

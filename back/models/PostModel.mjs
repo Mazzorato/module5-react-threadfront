@@ -11,14 +11,6 @@ export const Post = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: { msg: "Veuillez remplir ce champ" },
-        len: { args: [1, 200], msg: "1 a 200 caractères" },
-      },
-    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
