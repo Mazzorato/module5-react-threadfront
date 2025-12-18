@@ -5,13 +5,15 @@ import {  useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateFormat.jsx";
+import { useContext } from "react";
+import { NotifContext } from "../../App.jsx";
 
 export function NewPost() {
 
   const navigate = useNavigate();
   const { username } = useParams();
   const [newPost, setNewPost] = useState("");
-
+  const { addNotif } = useContext(NotifContext);
 
   function handleInputChange(e){
     setNewPost(e.target.value);
@@ -39,11 +41,13 @@ export function NewPost() {
       if (response.ok) {
         setNewPost("");
         console.log("Post envoyé avec succès !");
+        addNotif("Post envoyé avec succès !", "success");
         navigate("/feed");
 
       }
     } catch (error) {
       console.error("Error al enviar comentario:", error);
+      addNotif("Erreur lors de l'envoi du post", "error");
     }
   };
 

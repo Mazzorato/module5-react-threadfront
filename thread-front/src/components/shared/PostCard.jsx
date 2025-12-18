@@ -1,6 +1,8 @@
 import "./PostCard.css";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateFormat";
+import { useContext } from "react";
+import { NotifContext } from "../../App.jsx";
 
 export default function PostCard({
   author,
@@ -12,6 +14,7 @@ export default function PostCard({
   reloadPosts,
 }) {
   const navigate = useNavigate();
+  const { addNotif } = useContext(NotifContext);
 
   function handleClick() {
     if (!isOpen) {
@@ -25,6 +28,7 @@ export default function PostCard({
         method: "DELETE",
         credentials: "include",
       }).then((result) => {
+        addNotif("Post supprimé", "success");
         reloadPosts();
       });
     }

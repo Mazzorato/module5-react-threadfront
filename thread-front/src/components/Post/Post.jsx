@@ -3,13 +3,15 @@ import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import CommentCard from "../shared/CommentCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { NotifContext } from "../../App.jsx";
 
 export function Post() {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const { addNotif } = useContext(NotifContext);
 
   function fetchPost() {
     try {
@@ -19,6 +21,7 @@ export function Post() {
         .catch((error) => console.error("Error fetching post:", error));
     } catch (error) {
       console.error("Unexpected error:", error);
+      addNotif("Erreur lors du chargement du post", "error");
     }
   }
 
@@ -64,10 +67,12 @@ export function Post() {
 
       if (response.ok) {
         setNewComment("");
+        addNotif("Commentaire envoyé avec succès !", "success");
         fetchPost();
       }
     } catch (error) {
       console.error("Error al enviar comentario:", error);
+      addNotif("Erreur lors de l'envoi du commentaire", "error");
     }
   };
 
