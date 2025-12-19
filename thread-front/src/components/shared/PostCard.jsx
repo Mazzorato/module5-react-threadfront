@@ -2,7 +2,7 @@ import "./PostCard.css";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateFormat";
 import { useContext } from "react";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 
 export default function PostCard({
   author,
@@ -27,7 +27,7 @@ export default function PostCard({
       fetch(`http://localhost:3000/posts/${id}`, {
         method: "DELETE",
         credentials: "include",
-      }).then((result) => {
+      }).then(() => {
         addNotif("Post supprimé", "success");
         reloadPosts();
       });

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,8 +11,7 @@ import { Profil } from "./components/profile/profile.jsx";
 import { Settings } from "./components/settings/settings.jsx";
 import { Notif } from "./components/shared/notif.jsx";
 import { AuthProvider } from "./components/auth/authContext.jsx";
-
-export const NotifContext = createContext({});
+import { NotifContext } from "./utils/NotifContext.jsx";
 
 function App() {
   const [notifications, setNotifications] = useState([]);

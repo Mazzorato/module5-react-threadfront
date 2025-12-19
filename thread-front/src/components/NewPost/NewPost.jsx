@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateFormat.jsx";
 import { useContext } from "react";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
+
 
 export function NewPost() {
 

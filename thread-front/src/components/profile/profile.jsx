@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../auth/authContext.jsx";
@@ -6,12 +6,14 @@ import "./profile.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 
 import logoSetting from "../../assets/logo-setting.svg";
 
 export function Profil() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { addNotif } = useContext(NotifContext);
 
   const [firstPost, setFirstPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -37,6 +39,7 @@ export function Profil() {
       }
     } catch (error) {
       console.error("Error fetching data:", error);
+      addNotif("Erreur lors du chargement des posts", "error");
     }
   };
 

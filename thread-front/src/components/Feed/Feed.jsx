@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Feed.css";
 import Title from "../shared/Title.jsx";
 import PostCard from "../shared/PostCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 
 export function Feed() {
   const [posts, setPosts] = useState([]);
+  const { addNotif } = useContext(NotifContext);
 
   function fetchPosts() {
     try {
@@ -15,6 +17,7 @@ export function Feed() {
           .catch((error) => console.error("Error fetching post:", error));
     } catch (error) {
       console.error("Unexpected error:", error);
+      addNotif("Erreur lors du chargement des posts", "error");
     }
   }
 

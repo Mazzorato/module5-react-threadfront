@@ -5,7 +5,7 @@ import CommentCard from "../shared/CommentCard.jsx";
 import NavBar from "../shared/NavBar.jsx";
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 
 export function Post() {
   const { id } = useParams();

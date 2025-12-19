@@ -1,7 +1,7 @@
 import "./CommentCard.css";
 import { formatDate } from "../../utils/dateFormat";
 import { useContext } from "react";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 
 export default function CommentCard({
   id,
@@ -17,7 +17,7 @@ export default function CommentCard({
       fetch(`http://localhost:3000/comments/${id}`, {
         method: "DELETE",
         credentials: "include",
-      }).then((result) => {
+      }).then(() => {
         addNotif("Commentaire supprimé", "success");
         reloadPost();
       });

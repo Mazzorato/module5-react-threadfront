@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 import Title from "../shared/Title.jsx";
 import { useContext } from "react";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
 import { useAuth } from "./authContext.jsx";
 
 export function Login() {
@@ -39,6 +39,7 @@ export function Login() {
           credentials: "include",
         });
         const data = await me.json();
+        addNotif("Connexion réussie", "success");
         setUser(data);
 
         navigate("/feed");

@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./register.css";
 import Title from "../shared/Title.jsx";
 import { useContext } from "react";
-import { NotifContext } from "../../App.jsx";
+import { NotifContext } from "../../utils/NotifContext";
+
 
 export function Register() {
   const navigate = useNavigate();
