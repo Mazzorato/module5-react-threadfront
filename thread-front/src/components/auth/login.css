@@ -1,0 +1,52 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.zoneT {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: white;
+  width: 100%;
+}
+
+.emailL,
+.mdpL {
+  color: white;
+  font-weight: bold;
+}
+
+
+.btnLogin {
+  background-color: white;
+  color: black;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  align-self: center;
+}
+
+.lien {
+  color: #777;
+  text-decoration: underline;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+}

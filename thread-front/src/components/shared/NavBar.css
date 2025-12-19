@@ -1,0 +1,34 @@
+.navBar {
+  display: flex;
+  border: none;
+  position: fixed;
+  bottom: 0;
+  background-color: #1b1b1b;
+  padding: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.navBar-button-plus {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+}
+.navBar-button-profile {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+}
+.navBar-button-message {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  filter: invert(1);
+}
+
+.navBar img {
+  width: 6.5rem;
+  height: 3.5rem;
+}

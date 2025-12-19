@@ -1,0 +1,51 @@
+.registerPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem; /* Risque de changer avec l'import du title */
+}
+
+.zoneT {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: white;
+  width: 100%;
+}
+
+.pseudoR {
+  font-weight: bold;
+}
+
+.emailR {
+  font-weight: bold;
+}
+
+.passwordR {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.confirmPasswordR {
+  font-size: 1rem;
+}
+
+.btnRegister {
+  background-color: white;
+  color: black;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  align-self: center;
+}
