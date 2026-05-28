@@ -1,6 +1,6 @@
 export const db = 
 {
-    host: '127.0.0.1',
+    host: 'bdd',
     user: 'root',
     password: 'root',
     database: 'Thread_database',
